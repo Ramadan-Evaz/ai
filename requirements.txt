@@ -1,0 +1,27 @@
+bcrypt
+build
+discord.py
+diskcache
+fastapi
+gunicorn
+jinja2
+langdetect
+# should be >= 2 in order for "from langfuse.decorators" to work
+langfuse>=2.0.0
+litellm
+loguru
+openai
+pandas
+psycopg2-binary
+pydantic_settings
+pyjwt
+pytest-asyncio
+rich
+sendgrid
+setuptools
+tenacity
+tiktoken
+typer
+uvicorn
+wheel
+zxcvbn
