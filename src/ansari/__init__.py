@@ -1,5 +1,11 @@
+
 # This file marks the directory as a Python package.
 from .config import Settings, get_settings
-from . import evazan_ai_logger
 
-__all__ = ["Settings", "get_settings", "evazan_ai_logger"]
+# Lazy Import to Avoid Circular Import
+import importlib
+
+def get_logger():
+    return importlib.import_module(".evazan_ai_logger", package="ansari")
+
+__all__ = ["Settings", "get_settings", "get_logger"]
