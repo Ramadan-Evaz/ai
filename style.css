@@ -1,0 +1,327 @@
+/* 
+  اگر از فونت فارسی (مثلاً وزیر، شبنم یا ایران‌سنس) استفاده می‌کنید،
+  می‌توانید لینک CDN یا فایل فونت خود را در ابتدای فایل اضافه کنید:
+  
+  @import url("https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@latest/dist/font-face.css");
+*/
+
+/* تنظیمات کلی */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Vazir', sans-serif; /* یا هر فونت فارسی دلخواه */
+  direction: rtl;
+  background-color: #F0F3F4; /* خاکستری خیلی روشن */
+  color: #333;
+}
+
+/* ===== HEADER ===== */
+.main-header {
+  width: 100%;
+  background-color: #0A3D62; /* آبی متمایل به سبز (Teal) */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.header-logo a {
+  color: #F79F1F; /* نارنجی طلایی */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.header-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.header-nav li a {
+  color: #F79F1F;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.header-nav li a:hover {
+  color: #FFC266; /* نارنجی روشن‌تر */
+}
+
+/* ===== HERO SECTION ===== */
+.hero-section {
+  /* یک تصویر پس‌زمینه نمونه + گرادیان تیره برای خواناتر شدن متن:
+     جایگزین زیر را با تصویر فوتسال/رمضان دلخواه خود کنید */
+  background: 
+    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)),
+    url("https://via.placeholder.com/1920x700/222222/FFFFFF?text=Ramadan+Futsal");
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: #F79F1F;
+  padding: 1.5rem;
+}
+.hero-content h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.hero-content p {
+  margin-bottom: 1rem;
+}
+.btn-primary {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background-color: #F79F1F;
+  color: #0A3D62;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+}
+.btn-primary:hover {
+  background-color: #FFC266;
+  transform: translateY(-2px);
+}
+
+/* ===== COUNTDOWN SECTION ===== */
+.countdown-section {
+  background-color: #0A3D62;
+  color: #F79F1F;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.countdown-section h2 {
+  margin-bottom: 1rem;
+}
+.countdown {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.countdown div {
+  background: #F79F1F;
+  color: #0A3D62;
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 60px;
+  text-align: center;
+}
+.countdown span {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.countdown p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* ===== MATCHES SECTION (کارت‌ها) ===== */
+.matches-section {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+.matches-section h2 {
+  color: #0A3D62;
+  margin-bottom: 1.5rem;
+}
+.matches-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.match-card {
+  background-color: #fff;
+  width: 280px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.match-card:hover {
+  transform: translateY(-4px);
+}
+.match-card h3 {
+  color: #0A3D62;
+  margin-bottom: 0.5rem;
+}
+.match-card p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+.btn-match-details {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #F79F1F;
+  color: #0A3D62;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+.btn-match-details:hover {
+  background-color: #FFC266;
+}
+
+/* ===== SPONSORS SECTION ===== */
+.sponsors-section {
+  background-color: #ECECEC;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+.sponsors-section h2 {
+  color: #0A3D62;
+  margin-bottom: 1rem;
+}
+.sponsors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+.sponsor img {
+  width: 150px;
+  height: auto;
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+.sponsor img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-section {
+  background-color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+.contact-section h2 {
+  color: #0A3D62;
+  margin-bottom: 1rem;
+}
+.contact-section a {
+  color: #0A3D62;
+  text-decoration: underline;
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+  background-color: #0A3D62;
+  color: #F79F1F;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* ===== MODAL (جزئیات بازی) ===== */
+.modal {
+  display: none; /* پیش‌فرض مخفی */
+  position: fixed; /* در تمام صفحه */
+  z-index: 999;    /* بالاتر از باقی المان‌ها */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;  /* در صورت طولانی شدن محتوا اسکرول شود */
+  background-color: rgba(0,0,0,0.6); /* پس‌زمینه تیره شفاف */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto; /* فاصله از بالا */
+  padding: 1rem;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+  position: relative; /* برای قرار دادن دکمه بستن در گوشه بالایی */
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close-btn:hover {
+  color: #000;
+}
+
+/* استایل داخلی جزئیات بازی در مودال */
+#match-details h2 {
+  margin-top: 0;
+  color: #0A3D62;
+}
+#match-details h3 {
+  color: #0A3D62;
+  margin-top: 1rem;
+}
+#match-details p {
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+#match-details iframe {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 360px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+/* ===== RESPONSIVE (موبایل) ===== */
+@media (max-width: 768px) {
+  .header-nav ul {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    flex-direction: column;
+    background: #0A3D62;
+    padding: 1rem;
+    gap: 0.5rem;
+    display: none;
+  }
+  .header-nav ul.active {
+    display: flex;
+  }
+  
+  /* نمایش منوی همبرگری ساده (نمونه) */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+  }
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background: #F79F1F;
+    margin: 5px 0;
+  }
+
+  .matches-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}

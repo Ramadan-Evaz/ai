@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>جام رمضان شهرستان اوز - صفحه اصلی</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- هدر (Header) -->
+  <header class="main-header">
+    <div class="header-logo">
+      <a href="#hero">جام رمضان شهرستان اوز</a>
+    </div>
+    <nav class="header-nav">
+      <ul>
+        <li><a href="#hero">صفحه اصلی</a></li>
+        <li><a href="#matches">بازی‌ها</a></li>
+        <li><a href="#sponsors">حامیان</a></li>
+        <li><a href="#contact">تماس با ما</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- سکشن هیرو -->
+  <section class="hero-section" id="hero">
+    <div class="hero-content">
+      <h1>جام رمضان شهرستان اوز</h1>
+      <p>رقابت‌های مهیج فوتسال در شب‌های پرفضیلت رمضان</p>
+      <a href="#matches" class="btn-primary">مشاهده بازی‌ها</a>
+    </div>
+  </section>
+
+  <!-- شمارش معکوس -->
+  <section class="countdown-section">
+    <h2>زمان باقی‌مانده تا بازی بعدی</h2>
+    <div class="countdown" id="countdown-timer">
+      <div><span id="days">0</span><p>روز</p></div>
+      <div><span id="hours">0</span><p>ساعت</p></div>
+      <div><span id="minutes">0</span><p>دقیقه</p></div>
+      <div><span id="seconds">0</span><p>ثانیه</p></div>
+    </div>
+  </section>
+
+  <!-- بخش بازی‌ها -->
+  <section class="matches-section" id="matches">
+    <h2>برنامه بازی‌ها</h2>
+    <div class="matches-container" id="matches-container">
+      <!-- کارت‌های بازی‌ها بصورت پویا با جاوااسکریپت ساخته می‌شوند -->
+    </div>
+  </section>
+
+  <!-- بخش حامیان مالی -->
+  <section class="sponsors-section" id="sponsors">
+    <h2>حامیان</h2>
+    <div class="sponsors">
+      <div class="sponsor">
+        <img src="https://via.placeholder.com/150x80" alt="Sponsor 1">
+      </div>
+      <div class="sponsor">
+        <img src="https://via.placeholder.com/150x80" alt="Sponsor 2">
+      </div>
+      <div class="sponsor">
+        <img src="https://via.placeholder.com/150x80" alt="Sponsor 3">
+      </div>
+    </div>
+  </section>
+
+  <!-- تماس با ما -->
+  <section class="contact-section" id="contact">
+    <h2>تماس با ما</h2>
+    <p>برای اطلاعات بیشتر درباره نحوه شرکت تیم‌ها و جزییات برگزاری با ما در ارتباط باشید.</p>
+    <p>ایمیل: <a href="mailto:info@owz-ramadan-cup.com">info@owz-ramadan-cup.com</a></p>
+    <p>تلفن: ۰۹۱۲-xxx-xxxx</p>
+  </section>
+
+  <!-- فوتر -->
+  <footer class="main-footer">
+    <p>تمامی حقوق محفوظ است - جام رمضان شهرستان اوز - ۱۴۰۴</p>
+  </footer>
+
+  <!-- ===== مودال جزئیات بازی ===== -->
+  <div class="modal" id="match-modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-modal">&times;</span>
+      <div id="match-details">
+        <!-- اطلاعات بازی (توضیحات و پخش زنده) به صورت پویا در اینجا بارگذاری می‌شود -->
+      </div>
+    </div>
+  </div>
+  <!-- پایان مودال -->
+
+  <!-- فایل جاوااسکریپت -->
+  <script src="script.js"></script>
+  <script>
+    // راه‌اندازی شمارش معکوس
+    startCountdown("2025-03-05T21:00:00");
+    // بارگذاری کارت‌های بازی
+    document.addEventListener("DOMContentLoaded", loadMatches);
+  </script>
+</body>
+</html>
