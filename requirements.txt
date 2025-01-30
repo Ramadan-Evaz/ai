@@ -1,12 +1,12 @@
+
 bcrypt
 build
 discord.py
 diskcache
 fastapi
-gunicorn
+gunicorn==20.1.0
 jinja2
 langdetect
-# should be >= 2 in order for "from langfuse.decorators" to work
 langfuse>=2.0.0
 litellm
 loguru
@@ -22,6 +22,7 @@ setuptools
 tenacity
 tiktoken
 typer
-uvicorn
+uvicorn==0.20.0
+click==8.0.4
 wheel
 zxcvbn

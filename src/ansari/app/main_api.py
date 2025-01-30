@@ -16,13 +16,13 @@ from sendgrid.helpers.mail import Mail
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from zxcvbn import zxcvbn
 
-from evazan_ai.agents import Evazan AI, Evazan AIWorkflow
-from evazan_ai.evazan_ai_db import Evazan AIDB, MessageLogger
-from evazan_ai.evazan_ai_logger import get_logger
-from evazan_ai.app.main_whatsapp import router as whatsapp_router
-from evazan_ai.config import Settings, get_settings
-from evazan_ai.presenters.api_presenter import ApiPresenter
-from evazan_ai.util.general_helpers import get_extended_origins, validate_cors
+from src.ansari.agents import EvazanAI, EvazanAIWorkflow
+from src.ansari.evazan_ai_db import EvazanAIDB, MessageLogger
+from src.ansari.evazan_ai_logger import get_logger
+from src.ansari.app.main_whatsapp import router as whatsapp_router
+from src.ansari.config import Settings, get_settings
+from src.ansari.presenters.api_presenter import ApiPresenter
+from src.ansari.util.general_helpers import get_extended_origins, validate_cors
 
 logger = get_logger()
 
@@ -59,8 +59,8 @@ def add_app_middleware():
 
 add_app_middleware()
 
-db = Evazan AIDB(get_settings())
-evazan_ai = Evazan AI(get_settings())
+db = EvazanAIDB(get_settings())
+evazan_ai = EvazanAI(get_settings())
 
 presenter = ApiPresenter(app, evazan_ai)
 presenter.present()
@@ -89,7 +89,8 @@ if __name__ == "__main__" and get_settings().DEBUG_MODE:
     import uvicorn
 
     filename_without_extension = os.path.splitext(os.path.basename(__file__))[0]
-    uvicorn.run(
+    if __name__ == "__main__":
+    uvicorn.run("src.ansari.app.main_api:app", host="0.0.0.0", port=8000, reload=True)
         f"{filename_without_extension}:app",
         host="localhost",
         port=8000,
@@ -402,7 +403,7 @@ def add_message(
 
     try:
         db.append_message(token_params["user_id"], thread_id, req.role, req.content)
-        # Now actually use Evazan AI.
+        # Now actually use EvazanAI.
         history = db.get_thread_llm(thread_id, token_params["user_id"])
         if history["thread_name"] is None and len(history["messages"]) > 1:
             db.set_thread_name(
@@ -606,7 +607,7 @@ async def request_password_reset(
         message = Mail(
             from_email="feedback@evazan_ai.chat",
             to_emails=f"{req.email}",
-            subject="Evazan AI Password Reset",
+            subject="EvazanAI Password Reset",
             html_content=rendered_template,
         )
 
@@ -714,7 +715,7 @@ async def answer_ayah_question(
     req: AyahQuestionRequest,
     cors_ok: bool = Depends(validate_cors),
     settings: Settings = Depends(get_settings),
-    db: Evazan AIDB = Depends(lambda: Evazan AIDB(get_settings())),
+    db: EvazanAIDB = Depends(lambda: EvazanAIDB(get_settings())),
 ):
     if not cors_ok:
         raise HTTPException(status_code=403, detail="CORS not permitted")
@@ -723,9 +724,9 @@ async def answer_ayah_question(
         raise HTTPException(status_code=401, detail="Unauthorized")
 
     try:
-        # Create Evazan AIWorkflow instance with ayah-specific system prompt
-        logging.debug(f"Creating Evazan AI Workflow instance for {req.surah}:{req.ayah}")
-        evazan_ai_workflow = Evazan AIWorkflow(settings, system_prompt_file=settings.AYAH_SYSTEM_PROMPT_FILE_NAME)
+        # Create EvazanAIWorkflow instance with ayah-specific system prompt
+        logging.debug(f"Creating EvazanAI Workflow instance for {req.surah}:{req.ayah}")
+        evazan_ai_workflow = EvazanAIWorkflow(settings, system_prompt_file=settings.AYAH_SYSTEM_PROMPT_FILE_NAME)
 
         ayah_id = req.surah * 1000 + req.ayah
 
